@@ -13,7 +13,7 @@ public class ManipulacaoBanco {
 	public static Connection con;
     public static Statement stm;
     
-	public static void executarQuery(String sql){
+	public static void inserirDados(String sql){
 		con = Conexao.conectar();
 		try {
 			stm = con.createStatement();
@@ -31,7 +31,7 @@ public class ManipulacaoBanco {
 	}
 	
 	
-	public static ResultSet alterarDados(String sql) {		
+	public static ResultSet buscarDados(String sql) {		
 		con = Conexao.conectar();
 		try {
 			stm = con.createStatement();
