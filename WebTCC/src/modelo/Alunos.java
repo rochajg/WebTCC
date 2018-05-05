@@ -1,14 +1,14 @@
 package modelo;
 
 public class Alunos {
-	private int matricula; 
-	private String nome, 
-				   curso, 
-				   campus,
-				   turma,
-				   anoSemestre,
-				   tituloTCC,
-				   senha;
+	private int matricula = 0; 
+	private String nome="", 
+				   curso="", 
+				   campus="",
+				   turma="",
+				   anoSemestre="",
+				   tituloTCC="",
+				   senha="";
 	
 	public int getMatricula() {
 		return matricula;
