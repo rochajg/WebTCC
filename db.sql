@@ -32,7 +32,7 @@ CREATE TABLE `acompanhamento_tcc` (
   PRIMARY KEY (`id`),
   KEY `fk_orientador_aluno_idx` (`id_orientador_aluno`),
   CONSTRAINT `fk_orientador_aluno` FOREIGN KEY (`id_orientador_aluno`) REFERENCES `orientador_aluno` (`id_orientador`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `acompanhamento_tcc` (
 
 LOCK TABLES `acompanhamento_tcc` WRITE;
 /*!40000 ALTER TABLE `acompanhamento_tcc` DISABLE KEYS */;
+INSERT INTO `acompanhamento_tcc` VALUES (1,1,'2018-05-05','teste');
 /*!40000 ALTER TABLE `acompanhamento_tcc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,6 +72,7 @@ CREATE TABLE `alunos` (
 
 LOCK TABLES `alunos` WRITE;
 /*!40000 ALTER TABLE `alunos` DISABLE KEYS */;
+INSERT INTO `alunos` VALUES (2015790019,'Jordan Gabriel Lameira Rocha','TADS','Belém','C79TP','2017.2',NULL,'202cb962ac59075b964b07152d234b70');
 /*!40000 ALTER TABLE `alunos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +92,7 @@ CREATE TABLE `orientador_aluno` (
   KEY `fk_id_orientador_idx` (`id_orientador`),
   CONSTRAINT `fk_id_aluno` FOREIGN KEY (`id_aluno`) REFERENCES `alunos` (`matricula`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_id_orientador` FOREIGN KEY (`id_orientador`) REFERENCES `orientadores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,6 +101,7 @@ CREATE TABLE `orientador_aluno` (
 
 LOCK TABLES `orientador_aluno` WRITE;
 /*!40000 ALTER TABLE `orientador_aluno` DISABLE KEYS */;
+INSERT INTO `orientador_aluno` VALUES (1,1,2015790019);
 /*!40000 ALTER TABLE `orientador_aluno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +119,7 @@ CREATE TABLE `orientadores` (
   `login` varchar(45) NOT NULL,
   `senha` varchar(200) NOT NULL,
   PRIMARY KEY (`id`,`nome`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,6 +128,7 @@ CREATE TABLE `orientadores` (
 
 LOCK TABLES `orientadores` WRITE;
 /*!40000 ALTER TABLE `orientadores` DISABLE KEYS */;
+INSERT INTO `orientadores` VALUES (1,'Marcio Warris','TADS','marcio.warris','202cb962ac59075b964b07152d234b70');
 /*!40000 ALTER TABLE `orientadores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,6 +139,60 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'tcc_ifpa'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `addObservacao` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addObservacao`(IN obs TEXT, IN nomeOrientador varchar(120), IN matAluno INT)
+BEGIN
+	DECLARE idOrientador INT;
+    DECLARE idOriAluno INT;
+    
+    SELECT id INTO idOrientador FROM orientadores
+		WHERE nome=nomeOrientador;
+        
+	SELECT id INTO idOriAluno FROM orientador_aluno
+		WHERE id_orientador=idOrientador AND id_aluno=matAluno;
+        
+	INSERT INTO acompanhamento_tcc(id_orientador_aluno, data_obs, observacao)
+		VALUES(idOriAluno, CURDATE(), obs);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getObservacoes` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getObservacoes`(IN nomeOrientador VARCHAR(120), IN matAluno INT)
+BEGIN
+	DECLARE idOrientador INT;
+    
+    SELECT id INTO idOrientador FROM orientadores
+		WHERE nome=nomeOrientador;
+        
+	SELECT * FROM orientador_aluno
+		WHERE id_orientador=idOrientador AND id_aluno=matAluno;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -145,4 +203,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-05 15:34:11
+-- Dump completed on 2018-05-05 18:03:37
