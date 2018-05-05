@@ -28,7 +28,6 @@ public class AlunosDAO {
 						aluno.getTituloTCC(), aluno.getSenha());
 				
 				ManipulacaoBanco.inserirDados(sql);
-				System.out.println("Aluno cadastrado com sucesso!");
 				
 				return true;
 			}
@@ -46,7 +45,6 @@ public class AlunosDAO {
 				String sql = String.format("DETELE FROM alunos WHERE matricula=%d", aluno.getMatricula());
 				ManipulacaoBanco.inserirDados(sql);
 				
-				System.out.println("Aluno deletado do sistema");
 			} else {
 				System.out.println("ERRO! Aluno nao encontrado!\nPor favor, verifique os dados.");
 			}
@@ -105,7 +103,6 @@ public class AlunosDAO {
 					ManipulacaoBanco.inserirDados(sql);
 				}
 				
-				System.out.println("Dados alterados com sucesso!");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
