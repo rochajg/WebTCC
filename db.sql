@@ -45,13 +45,13 @@ LOCK TABLES `acompanhamento_tcc` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `aluno`
+-- Table structure for table `alunos`
 --
 
-DROP TABLE IF EXISTS `aluno`;
+DROP TABLE IF EXISTS `alunos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `aluno` (
+CREATE TABLE `alunos` (
   `matricula` int(12) NOT NULL,
   `nome` varchar(120) NOT NULL,
   `curso` varchar(120) NOT NULL,
@@ -66,38 +66,12 @@ CREATE TABLE `aluno` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `aluno`
+-- Dumping data for table `alunos`
 --
 
-LOCK TABLES `aluno` WRITE;
-/*!40000 ALTER TABLE `aluno` DISABLE KEYS */;
-/*!40000 ALTER TABLE `aluno` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `orientador`
---
-
-DROP TABLE IF EXISTS `orientador`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orientador` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(120) NOT NULL,
-  `curso` varchar(120) NOT NULL,
-  `login` varchar(45) NOT NULL,
-  `senha` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`,`nome`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `orientador`
---
-
-LOCK TABLES `orientador` WRITE;
-/*!40000 ALTER TABLE `orientador` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orientador` ENABLE KEYS */;
+LOCK TABLES `alunos` WRITE;
+/*!40000 ALTER TABLE `alunos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `alunos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -114,8 +88,8 @@ CREATE TABLE `orientador_aluno` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_aluno_UNIQUE` (`id_aluno`),
   KEY `fk_id_orientador_idx` (`id_orientador`),
-  CONSTRAINT `fk_id_aluno` FOREIGN KEY (`id_aluno`) REFERENCES `aluno` (`matricula`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_id_orientador` FOREIGN KEY (`id_orientador`) REFERENCES `orientador` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_id_aluno` FOREIGN KEY (`id_aluno`) REFERENCES `alunos` (`matricula`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_id_orientador` FOREIGN KEY (`id_orientador`) REFERENCES `orientadores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -126,6 +100,32 @@ CREATE TABLE `orientador_aluno` (
 LOCK TABLES `orientador_aluno` WRITE;
 /*!40000 ALTER TABLE `orientador_aluno` DISABLE KEYS */;
 /*!40000 ALTER TABLE `orientador_aluno` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orientadores`
+--
+
+DROP TABLE IF EXISTS `orientadores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orientadores` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(120) NOT NULL,
+  `curso` varchar(120) NOT NULL,
+  `login` varchar(45) NOT NULL,
+  `senha` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`,`nome`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orientadores`
+--
+
+LOCK TABLES `orientadores` WRITE;
+/*!40000 ALTER TABLE `orientadores` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orientadores` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -145,4 +145,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-05 12:51:03
+-- Dump completed on 2018-05-05 15:34:11
