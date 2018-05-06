@@ -10,8 +10,8 @@
 	<h2>Login</h2>
 	
 	<form action="logar.jsp" method="post">
-		<label for="login">Login: </label>
-		<input type="text" name="login" placeholder="n° matricula ou login orientador" required/><br />
+		<label for="login">Login ou Matricula: </label>
+		<input type="text" name="login" required/><br />
 		
 		<label for="senha">Senha: </label>
 		<input type="password" name="senha" placeholder="********" required/><br />
