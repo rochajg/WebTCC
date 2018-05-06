@@ -60,6 +60,15 @@ public class OrientadoresDAO {
 		return resultado;
 	}
 	
+	public static ResultSet login(Orientadores orientador) {
+		ResultSet resultado;
+		String sql = String.format("SELECT * FROM orientadores WHERE login='%s' AND senha=md5('%s')", orientador.getLogin(), orientador.getSenha());
+		
+		resultado = ManipulacaoBanco.buscarDados(sql);
+		
+		return resultado;
+	}
+	
 	public static ResultSet buscarOrientador(Orientadores orientador) {
 		String sql = String.format("SELECT * FROM orientadores WHERE nome='%s'", orientador.getNome());
 		return ManipulacaoBanco.buscarDados(sql);

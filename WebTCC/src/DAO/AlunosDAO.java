@@ -53,7 +53,7 @@ public class AlunosDAO {
 		}
 	}
 
-	public void atualizar(int matriculaErrado, Alunos aluno) {
+	public static void atualizar(int matriculaErrado, Alunos aluno) {
 		Alunos alunoErrado = new Alunos();
 		alunoErrado.setMatricula(matriculaErrado);
 		ResultSet resultado = buscarAluno(alunoErrado);
@@ -108,6 +108,14 @@ public class AlunosDAO {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public static ResultSet login(Alunos aluno) {
+		ResultSet resultado;
+		String sql = String.format("SELECT * FROM alunos WHERE matricula=%d AND senha=md5('%s')", aluno.getMatricula(), aluno.getSenha());
+		
+		resultado = ManipulacaoBanco.buscarDados(sql);
+		return resultado;
 	}
 	
 	public static ResultSet buscarAluno(Alunos aluno) {
