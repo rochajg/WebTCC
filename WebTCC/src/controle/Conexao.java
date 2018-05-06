@@ -7,7 +7,8 @@ import java.sql.SQLException;
 public class Conexao {
 	private static String db = "tcc_ifpa";
 	private static String endereco = "localhost";
-	private static String caminho = "jdbc:mysql://"+ endereco +":3307/" + db;
+	private static String porta = "3306";
+	private static String caminho = "jdbc:mysql://"+ endereco +":"+ porta +"/" + db;
 	private static String login = "root";
 	private static String senha = "root";
 	private static Connection con;
@@ -24,6 +25,7 @@ public class Conexao {
 			
 		} catch (ClassNotFoundException e) {
 			System.out.println("Erro ao carregar o Driver");
+			System.out.println(e);
 		
 		} catch (SQLException e) {
 			System.out.println("Erro ao tentar estabelecer conexao");
