@@ -8,5 +8,8 @@
 </head>
 <body>
 	<h1>Página de teste como home</h1>
+	
+	<a href="cadastro-aluno.jsp">Cadastrar novo Aluno!</a>
+	<a href="cadastro-orientador.jsp">Cadastrar Orientador!</a>
 </body>
 </html>
