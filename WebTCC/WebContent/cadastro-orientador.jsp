@@ -22,7 +22,7 @@
 		<label for="senha">Senha:</label>
 		<input type="password" name="senha" id="senha" /><br />
 		
-		<input type="submit" value="Cadastrar!" required />
+		<input type="submit" value="Cadastrar!"  />
 	</form>
 
 </body>
