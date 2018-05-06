@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<jsp:useBean class="modelo.Orientadores" id="orientador" />
+<jsp:useBean class="modelo.Orientador" id="orientador" />
 
 <%
 	orientador.setNome(request.getParameter("nome"));

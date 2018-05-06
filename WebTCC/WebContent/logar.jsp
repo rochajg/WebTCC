@@ -9,8 +9,8 @@
 </head>
 <body>
 
-<jsp:useBean class="modelo.Alunos" id="aluno"/>
-<jsp:useBean class="modelo.Orientadores" id="orientador"/>
+<jsp:useBean class="modelo.Aluno" id="aluno"/>
+<jsp:useBean class="modelo.Orientador" id="orientador"/>
 
 <%@ page import="java.sql.ResultSet, java.sql.SQLException" %>
 
