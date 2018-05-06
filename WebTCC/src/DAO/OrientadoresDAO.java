@@ -60,8 +60,7 @@ public class OrientadoresDAO {
 		return resultado;
 	}
 	
-<<<<<<< HEAD
-	public static ResultSet login(Orientadores orientador) {
+	public static ResultSet login(Orientador orientador) {
 		ResultSet resultado;
 		String sql = String.format("SELECT * FROM orientadores WHERE login='%s' AND senha=md5('%s')", orientador.getLogin(), orientador.getSenha());
 		
@@ -70,10 +69,8 @@ public class OrientadoresDAO {
 		return resultado;
 	}
 	
-	public static ResultSet buscarOrientador(Orientadores orientador) {
-=======
+	
 	public static ResultSet buscarOrientador(Orientador orientador) {
->>>>>>> branch 'master' of https://github.com/RochaJG/WebTCC
 		String sql = String.format("SELECT * FROM orientadores WHERE nome='%s'", orientador.getNome());
 		return ManipulacaoBanco.buscarDados(sql);
 	}

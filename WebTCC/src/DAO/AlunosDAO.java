@@ -53,13 +53,8 @@ public class AlunosDAO {
 		}
 	}
 
-<<<<<<< HEAD
-	public static void atualizar(int matriculaErrado, Alunos aluno) {
-		Alunos alunoErrado = new Alunos();
-=======
 	public void atualizar(int matriculaErrado, Aluno aluno) {
 		Aluno alunoErrado = new Aluno();
->>>>>>> branch 'master' of https://github.com/RochaJG/WebTCC
 		alunoErrado.setMatricula(matriculaErrado);
 		ResultSet resultado = buscarAluno(alunoErrado);
 		
@@ -115,8 +110,8 @@ public class AlunosDAO {
 
 	}
 	
-<<<<<<< HEAD
-	public static ResultSet login(Alunos aluno) {
+
+	public static ResultSet login(Aluno aluno) {
 		ResultSet resultado;
 		String sql = String.format("SELECT * FROM alunos WHERE matricula=%d AND senha=md5('%s')", aluno.getMatricula(), aluno.getSenha());
 		
@@ -124,10 +119,7 @@ public class AlunosDAO {
 		return resultado;
 	}
 	
-	public static ResultSet buscarAluno(Alunos aluno) {
-=======
 	public static ResultSet buscarAluno(Aluno aluno) {
->>>>>>> branch 'master' of https://github.com/RochaJG/WebTCC
 		String sql = String.format("SELECT * FROM alunos WHERE matricula=%d", aluno.getMatricula());
 		
 		return ManipulacaoBanco.buscarDados(sql);
