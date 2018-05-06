@@ -18,7 +18,7 @@ public class OrientadoresDAO {
 				System.out.println("Orientador ja cadastrado!");
 				return false;
 			} else {
-				String sql = String.format("INSERT INTO orientadores(nome, curso, login, senha) VALUES('%s', '%s', '%s', md5('%s')",
+				String sql = String.format("INSERT INTO orientadores(nome, curso, login, senha) VALUES('%s', '%s', '%s', md5('%s'))",
 						orientador.getNome(), orientador.getCurso(), orientador.getLogin(), orientador.getSenha());
 				
 				ManipulacaoBanco.inserirDados(sql);

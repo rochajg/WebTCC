@@ -23,7 +23,7 @@ public class AlunosDAO {
 				return false;
 			} else {
 				String sql = String.format("INSERT INTO alunos(matricula, nome, curso, campus, turma, ano_semestre, titulo_tcc, senha) "
-						+ "VALUES(%d, '%s', '%s', '%s', '%s', '%s', '%s', md5('%s')",
+						+ "VALUES(%d, '%s', '%s', '%s', '%s', '%s', '%s', md5('%s'))",
 						aluno.getMatricula(), aluno.getNome(), aluno.getCurso(), aluno.getCampus(), aluno.getTurma(), aluno.getAnoSemestre(),
 						aluno.getTituloTCC(), aluno.getSenha());
 				
