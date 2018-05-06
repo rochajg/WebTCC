@@ -1,6 +1,6 @@
 package modelo;
 
-public class Orientadores {
+public class Orientador {
 	private String nome,
 				   curso,
 				   login,

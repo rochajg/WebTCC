@@ -1,6 +1,6 @@
 package modelo;
 
-public class Alunos {
+public class Aluno {
 	private int matricula = 0; 
 	private String nome="", 
 				   curso="", 

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<jsp:useBean class="modelo.Alunos" id="aluno" />
+<jsp:useBean class="modelo.Aluno" id="aluno" />
 
 <%
 	aluno.setMatricula(Integer.parseInt(request.getParameter("matricula").toString()));

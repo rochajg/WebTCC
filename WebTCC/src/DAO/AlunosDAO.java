@@ -4,16 +4,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import controle.ManipulacaoBanco;
-import modelo.Alunos;
+import modelo.Aluno;
 
 public class AlunosDAO {
 	/* 
-	 * Método de cadastro de novo aluno
+	 * Mï¿½todo de cadastro de novo aluno
 	 * que recebe um objeto Alunos e insere
 	 * seus dados no banco de dados
 	 * @return Boolean - Cadastro realizado
 	 */
-	public static boolean cadastrar(Alunos aluno) {
+	public static boolean cadastrar(Aluno aluno) {
 		
 		ResultSet resultado = buscarAluno(aluno);
 		
@@ -37,7 +37,7 @@ public class AlunosDAO {
 		}
 	}
 
-	public static void deletar(Alunos aluno) {
+	public static void deletar(Aluno aluno) {
 		ResultSet resultado = buscarAluno(aluno);
 				
 		try {
@@ -53,8 +53,8 @@ public class AlunosDAO {
 		}
 	}
 
-	public void atualizar(int matriculaErrado, Alunos aluno) {
-		Alunos alunoErrado = new Alunos();
+	public void atualizar(int matriculaErrado, Aluno aluno) {
+		Aluno alunoErrado = new Aluno();
 		alunoErrado.setMatricula(matriculaErrado);
 		ResultSet resultado = buscarAluno(alunoErrado);
 		
@@ -110,7 +110,7 @@ public class AlunosDAO {
 
 	}
 	
-	public static ResultSet buscarAluno(Alunos aluno) {
+	public static ResultSet buscarAluno(Aluno aluno) {
 		String sql = String.format("SELECT * FROM alunos WHERE matricula=%d", aluno.getMatricula());
 		
 		return ManipulacaoBanco.buscarDados(sql);
