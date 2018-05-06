@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Cadastro Orientador</title>
 </head>
 <body>
 
@@ -25,9 +25,9 @@
 		<script>
 			alert("ERRO! Falha ao cadastrar.\n" +
 				  "Por favor, verifique os dados e tente novamente.");
+			window.location = "cadastro-orientador.jsp";
 		</script>
 		<%
-		response.sendRedirect("cadastro-orientador.jsp");
 	}
 %>
 
