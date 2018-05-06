@@ -25,6 +25,9 @@
 		
 		try {		
 			if(login.next()) {
+				aluno.setNome(login.getString("nome"));
+				aluno.setCurso(login.getString("curso"));
+				
 				session.setAttribute("Aluno", aluno);
 				response.sendRedirect("index.jsp");
 			} else {
@@ -46,6 +49,8 @@
 		
 		try {		
 			if(login.next()) {
+				orientador.setNome(login.getString("nome"));
+				
 				session.setAttribute("Orientador", orientador);
 				response.sendRedirect("index.jsp");
 			} else {
