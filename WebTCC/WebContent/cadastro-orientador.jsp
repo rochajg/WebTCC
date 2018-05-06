@@ -11,18 +11,18 @@
 
 	<form action="cad-ori.jsp" method="POST">
 		<label for="nome">Nome:</label>
-		<input type="text" name="nome"/><br />
+		<input type="text" name="nome" required /><br />
 		
 		<label for="curso">Curso:</label>
-		<input type="text" name="curso" /><br />
+		<input type="text" name="curso" required /><br />
 		
 		<label for="login">Login:</label>
-		<input type="text" name="login"/><br />
+		<input type="text" name="login" required /><br /> 
 		
 		<label for="senha">Senha:</label>
 		<input type="password" name="senha" id="senha" /><br />
 		
-		<input type="submit" value="Cadastrar!" />
+		<input type="submit" value="Cadastrar!" required />
 	</form>
 
 </body>
