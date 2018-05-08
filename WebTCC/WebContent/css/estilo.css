@@ -1,0 +1,25 @@
+*{
+	outline: none;
+}
+
+body, html{
+	margin: 0;
+	background-color: #E0F2F1;
+}
+
+form{
+	display: block;
+	margin: 10% auto;
+	background-color: rgba(128,203,196,0.4);
+	width: 300px;
+    border-radius: 9px;
+    padding: 25px;
+}
+
+input[type="text"],input[type="password"]{
+	margin-bottom: 15px;
+}
+
+label{
+	font-family: ;
+}
