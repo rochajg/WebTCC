@@ -10,6 +10,10 @@ public class Aluno {
 				   tituloTCC="",
 				   senha="";
 	
+	public Aluno() {
+		
+	}
+	
 	public Aluno(int matricula, String nome, String curso, String campus, String turma, String anoSemestre,
 			String tituloTCC, String senha) {
 		super();
