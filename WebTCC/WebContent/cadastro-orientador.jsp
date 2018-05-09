@@ -9,6 +9,7 @@
 <title>Cadastro Orientador</title>
 </head>
 <body>
+	<h2>Cadastrar Orientador</h2>
 
 	<form action="cad-ori.jsp" method="POST">
 		<label for="nome">Nome:</label><br />

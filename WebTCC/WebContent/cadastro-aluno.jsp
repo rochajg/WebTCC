@@ -8,6 +8,7 @@
 <title>Cadastro Aluno</title>
 </head>
 <body>
+	<h2>Cadastrar Aluno</h2>
 	
 	<form action="cad-aluno.jsp" method="post">
 	
