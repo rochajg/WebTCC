@@ -16,6 +16,11 @@
 	%>
 	
 	<h2>Olá, <%= aluno.getNome() %> </h2>
+	
+	<h3>Título TCC: <%= aluno.getTituloTCC() %> </h3>
+	
+	<a href="">Gerar Termo de Autoria Responsabilidade De Autoria</a>
+	
 	<footer>
 		Indie Atom Tecnologies&copy;
 	</footer>

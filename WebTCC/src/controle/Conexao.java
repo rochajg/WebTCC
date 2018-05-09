@@ -10,7 +10,7 @@ public class Conexao {
 	private static String porta = "3306";
 	private static String caminho = "jdbc:mysql://"+ endereco +":"+ porta +"/" + db;
 	private static String login = "root";
-	private static String senha = "root";
+	private static String senha = "ifpa@123";
 	private static Connection con;
 	
 	public static Connection conectar() {

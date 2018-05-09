@@ -25,8 +25,13 @@
 		
 		try {		
 			if(login.next()) {
+				aluno.setMatricula(login.getInt("matricula"));
 				aluno.setNome(login.getString("nome"));
 				aluno.setCurso(login.getString("curso"));
+				aluno.setCampus(login.getString("campus"));
+				aluno.setTurma(login.getString("turma"));
+				aluno.setAnoSemestre(login.getString("ano_semestre"));	
+				aluno.setTituloTCC(login.getString("titulo_tcc"));
 				
 				session.setAttribute("Aluno", aluno);
 				response.sendRedirect("pg-aluno.jsp");
