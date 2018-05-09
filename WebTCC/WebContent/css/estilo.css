@@ -36,3 +36,7 @@ label{
 	font-family: Arial;
 	font-weight: bold;
 }
+
+input[type="submit"]{
+	margin-bottom: 10px;
+}

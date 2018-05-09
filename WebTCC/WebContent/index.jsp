@@ -17,10 +17,12 @@
 		<label for="senha">Senha: </label><br />
 		<input type="password" name="senha" placeholder="********" required/><br />
 		
-		<input type="submit" value="Entrar" />
+		<input type="submit" value="Entrar" /><br />
+		
+		<a href="cadastro-aluno.jsp">Cadastrar novo Aluno</a><br />
+		<a href="cadastro-orientador.jsp">Cadastrar Orientador</a>
 	</form>
-	<a href="cadastro-aluno.jsp">Cadastrar novo Aluno</a>
-	<a href="cadastro-orientador.jsp">Cadastrar Orientador</a>
+	
 	
 </body>
 </html>
