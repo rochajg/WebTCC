@@ -37,6 +37,7 @@
 		<input type="password" name="senha" required /><br />
 		
 		<input type="submit" value="Cadastrar!" />
+		<a href="index.jsp"><input type="button" value="Cancelar" /></a>
 	
 	</form>
 	
