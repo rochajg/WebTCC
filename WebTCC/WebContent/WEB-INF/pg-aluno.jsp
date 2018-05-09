@@ -16,6 +16,8 @@
 	%>
 	
 	<h2>Olá, <%= aluno.getNome() %> </h2>
-	
+	<footer>
+		Indie Atom Tecnologies&copy;
+	</footer>
 </body>
 </html>

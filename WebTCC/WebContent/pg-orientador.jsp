@@ -17,5 +17,9 @@
 	
 	<h2>Olá, <%= orientador.getNome() %> </h2>
 	
+	<footer>
+		Indie Atom Tecnologies&copy;
+	</footer>
+	
 </body>
 </html>

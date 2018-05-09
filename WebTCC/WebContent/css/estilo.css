@@ -5,6 +5,7 @@
 body, html{
 	margin: 0;
 	background-color: #E0F2F1;
+	min-height: 95vh;
 }
 
 h2{
@@ -62,10 +63,19 @@ label{
 	font-weight: bold;
 }
 
-a {
+a{
     text-decoration: none;
 }
 
 p{
 	margin-bottom: -12px;
+}
+
+footer{
+	position: absolute;
+	bottom: 0;
+	display: block;
+	text-align: center;
+	width: 100%;
+
 }
