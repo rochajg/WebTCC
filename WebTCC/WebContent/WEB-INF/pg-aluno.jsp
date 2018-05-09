@@ -15,7 +15,7 @@
 		Aluno aluno = (Aluno) session.getAttribute("Aluno");
 	%>
 	
-	<h2>Olá <%= aluno.getNome() %> </h2>
+	<h2>Olá, <%= aluno.getNome() %> </h2>
 	
 </body>
 </html>

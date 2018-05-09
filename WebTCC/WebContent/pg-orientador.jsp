@@ -15,7 +15,7 @@
 		modelo.Orientador orientador = (Orientador) session.getAttribute("Orientador");
 	%>
 	
-	<h2>Olá <%= orientador.getNome() %> </h2>
+	<h2>Olá, <%= orientador.getNome() %> </h2>
 	
 </body>
 </html>
