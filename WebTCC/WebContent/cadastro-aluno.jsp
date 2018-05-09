@@ -4,34 +4,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="css/estilo.css">
 <title>Cadastro Aluno</title>
 </head>
 <body>
 	
 	<form action="cad-aluno.jsp" method="post">
 	
-		<label for="matricula">Matricula: </label>
+		<label for="matricula">Matricula: </label><br />
 		<input type="text" name="matricula" required /><br />
 		
-		<label for="nome">Nome: </label>
+		<label for="nome">Nome: </label><br />
 		<input type="text" name="nome" required /><br />
 		
-		<label for="curso">Curso: </label>
+		<label for="curso">Curso: </label><br />
 		<input type="text" name="curso" required/><br />
 		
-		<label for="campus">Campus: </label>
+		<label for="campus">Campus: </label><br />
 		<input type="text" name="campus" required/><br />
 		
-		<label for="turma">Turma: </label>
+		<label for="turma">Turma: </label><br />
 		<input type="text" name="turma" required/><br />
 		
-		<label for="anoSemestre">Ano.Semestre: </label>
+		<label for="anoSemestre">Ano.Semestre: </label><br />
 		<input type="text" name="anoSemestre" placeholder="2018.1" required/><br />
 		
-		<label for="tituloTCC">Titulo do TCC: </label>
+		<label for="tituloTCC">Titulo do TCC: </label><br />
 		<input type="text" name="tituloTCC" /><br />
 		
-		<label for="senha">Senha: </label>
+		<label for="senha">Senha: </label><br />
 		<input type="password" name="senha" required /><br />
 		
 		<input type="submit" value="Cadastrar!" />

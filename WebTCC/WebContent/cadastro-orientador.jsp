@@ -5,21 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="css/estilo.css">
 <title>Cadastro Orientador</title>
 </head>
 <body>
 
 	<form action="cad-ori.jsp" method="POST">
-		<label for="nome">Nome:</label>
+		<label for="nome">Nome:</label><br />
 		<input type="text" name="nome" required /><br />
 		
-		<label for="curso">Curso:</label>
+		<label for="curso">Curso:</label><br />
 		<input type="text" name="curso" required /><br />
 		
-		<label for="login">Login:</label>
+		<label for="login">Login:</label><br />
 		<input type="text" name="login" required /><br /> 
 		
-		<label for="senha">Senha:</label>
+		<label for="senha">Senha:</label><br />
 		<input type="password" name="senha" id="senha" /><br />
 		
 		<input type="submit" value="Cadastrar!"  />

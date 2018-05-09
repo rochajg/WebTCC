@@ -7,19 +7,32 @@ body, html{
 	background-color: #E0F2F1;
 }
 
+h2{
+	padding: 10px;
+	background-color: rgba(128,203,196,0.4);
+	font-family: Arial;
+}
+
 form{
 	display: block;
-	margin: 10% auto;
+	margin: 8% auto;
 	background-color: rgba(128,203,196,0.4);
-	width: 300px;
+	width: 250px;
     border-radius: 9px;
     padding: 25px;
 }
 
 input[type="text"],input[type="password"]{
 	margin-bottom: 15px;
+	margin-top: 3px;
+	padding-top: 2px;
+	padding-right: 5px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	border-radius: 4px;
 }
 
 label{
-	font-family: ;
+	font-family: Arial;
+	font-weight: bold;
 }
