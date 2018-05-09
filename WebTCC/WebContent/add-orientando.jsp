@@ -16,6 +16,10 @@
 		<a href="pg-orientador.jsp"><input type="button" value="Cancelar" /></a>
 		
 	</form>
+	
+	<footer>
+		Indie Atom Tecnologies&copy;
+	</footer>
 
 </body>
 </html>
