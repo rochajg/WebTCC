@@ -50,6 +50,8 @@
 		try {		
 			if(login.next()) {
 				orientador.setNome(login.getString("nome"));
+				orientador.setCurso(login.getString("curso"));
+				orientador.setId(login.getInt("id"));
 				
 				session.setAttribute("Orientador", orientador);
 				response.sendRedirect("pg-orientador.jsp");
