@@ -17,11 +17,7 @@
 	%>
 	
 	<h2>Olá, <%= orientador.getNome() %> </h2>
-	
-	<footer>
-		Indie Atom Tecnologies&copy;
-	</footer>
-	
+
 	<a href="add-orientando.jsp">+ Adicionar orientando</a>
 	
 	<%
@@ -43,6 +39,12 @@
 			}
 		}
 	%>
+	
+	
+		
+	<footer>
+		Indie Atom Tecnologies&copy;
+	</footer>
 	
 </body>
 </html>
