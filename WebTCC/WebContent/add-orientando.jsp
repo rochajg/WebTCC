@@ -8,9 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/" method="post">
+	<form action="add-ori.jsp" method="post">
 		<label for="matricula">Matricula: </label><br />
 		<input type="text" name="matricula" required /><br />
+		
+		<input type="submit" value="Adicionar" />
+		<a href="pg-orientador.jsp"><input type="button" value="Cancelar" /></a>
 		
 	</form>
 

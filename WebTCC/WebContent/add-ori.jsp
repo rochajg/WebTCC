@@ -23,7 +23,7 @@
 		<script>
 			alert("ERRO! Falha ao adicionar.\n" +
 				  "Orientando já cadastrado.");
-			window.location = "pg-orientador.jsp";
+			window.location = "add-orientando.jsp";
 		</script>
 		<%
 	}
