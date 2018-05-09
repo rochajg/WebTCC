@@ -5,6 +5,7 @@
 body, html{
 	margin: 0;
 	background-color: #E0F2F1;
+	min-height: 95vh;
 }
 
 h2{
@@ -32,15 +33,49 @@ input[type="text"],input[type="password"]{
 	border-radius: 4px;
 }
 
+input[type="submit"],input[type="button"]{
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 15px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #00695C;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 7px #999;
+}
+
+input[type="submit"]:hover,input[type="button"]:hover{
+	background-color: #004D40;
+}
+
+input[type="submit"]:active,input[type="button"]:active{
+	background-color: #004D40;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+
 label{
 	font-family: Arial;
 	font-weight: bold;
 }
 
-a {
+a{
     text-decoration: none;
 }
 
 p{
 	margin-bottom: -12px;
+}
+
+footer{
+	position: absolute;
+	bottom: 0;
+	display: block;
+	text-align: center;
+	width: 100%;
+
 }

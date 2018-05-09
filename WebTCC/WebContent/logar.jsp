@@ -29,7 +29,7 @@
 				aluno.setCurso(login.getString("curso"));
 				
 				session.setAttribute("Aluno", aluno);
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("pg-aluno.jsp");
 			} else {
 				%>
 				<script>

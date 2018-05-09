@@ -22,7 +22,8 @@
 		<a href="cadastro-aluno.jsp"><p>Cadastrar novo Aluno</a>
 		<a href="cadastro-orientador.jsp"><p>Cadastrar Orientador</a>
 	</form>
-	
-	
+	<footer>
+		Indie Atom Tecnologies&copy;
+	</footer>
 </body>
 </html>

@@ -16,7 +16,11 @@
 		modelo.Orientador orientador = (Orientador) session.getAttribute("Orientador");
 	%>
 	
-	<h2>Olá <%= orientador.getNome() %> </h2>
+	<h2>Olá, <%= orientador.getNome() %> </h2>
+	
+	<footer>
+		Indie Atom Tecnologies&copy;
+	</footer>
 	
 	<a href="add-orientando.jsp">+ Adicionar orientando</a>
 	
