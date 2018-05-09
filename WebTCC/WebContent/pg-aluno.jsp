@@ -19,7 +19,7 @@
 	
 	<h3>Título TCC: <%= aluno.getTituloTCC() %> </h3>
 	
-	<a href="">Gerar Termo de Autoria Responsabilidade De Autoria</a>
+	<a href="">Gerar Termo de Responsabilidade De Autoria</a>
 	
 	<footer>
 		Indie Atom Tecnologies&copy;
