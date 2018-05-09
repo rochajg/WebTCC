@@ -14,6 +14,22 @@ public class Aluno {
 		
 	}
 	
+	public Aluno(int matricula) {
+		this.matricula = matricula;
+	}
+	
+	public Aluno(int matricula, String nome, String curso, String campus, String turma, String anoSemestre,
+			String tituloTCC) {
+		super();
+		this.matricula = matricula;
+		this.nome = nome;
+		this.curso = curso;
+		this.campus = campus;
+		this.turma = turma;
+		this.anoSemestre = anoSemestre;
+		this.tituloTCC = tituloTCC;
+	}
+	
 	public Aluno(int matricula, String nome, String curso, String campus, String turma, String anoSemestre,
 			String tituloTCC, String senha) {
 		super();
@@ -26,6 +42,7 @@ public class Aluno {
 		this.tituloTCC = tituloTCC;
 		this.senha = senha;
 	}
+	
 	public int getMatricula() {
 		return matricula;
 	}

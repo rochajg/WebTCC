@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import controle.ManipulacaoBanco;
 import modelo.Aluno;
@@ -67,6 +68,39 @@ public class OrientadoresDAO {
 		resultado = ManipulacaoBanco.buscarDados(sql);
 		
 		return resultado;
+	}
+	
+	public static ArrayList<Aluno> buscarOrientandos(Orientador orientador) {
+		String sql = String.format("SELECT id_aluno FROM orientador_aluno WHERE id_orientador=%d", orientador.getId());
+		ResultSet listaOrientandos = ManipulacaoBanco.buscarDados(sql);
+		ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+		
+		try {
+			if(listaOrientandos.next())
+				do {
+					ResultSet aluno = AlunosDAO.buscarAluno(new Aluno(listaOrientandos.getInt("id_aluno")));
+					
+					if(aluno.next()) {
+						alunos.add(new Aluno(
+								aluno.getInt("matricula"),
+								aluno.getString("nome"),
+								aluno.getString("curso"),
+								aluno.getString("campus"),
+								aluno.getString("turma"),
+								aluno.getString("ano_semestre"),
+								aluno.getString("titulo_tcc")
+								));
+						System.out.println(aluno.getString("nome"));
+					} 
+				} while(listaOrientandos.next()) ;
+			
+			return alunos;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Opa! Deu erro aqui!");
+			return null;
+		}
+		
 	}
 	
 	
