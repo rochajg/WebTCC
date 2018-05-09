@@ -37,6 +37,10 @@ label{
 	font-weight: bold;
 }
 
-input[type="submit"]{
-	margin-bottom: 10px;
+a {
+    text-decoration: none;
+}
+
+p{
+	margin-bottom: -12px;
 }

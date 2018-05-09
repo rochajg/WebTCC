@@ -19,8 +19,8 @@
 		
 		<input type="submit" value="Entrar" /><br />
 		
-		<a href="cadastro-aluno.jsp">Cadastrar novo Aluno</a><br />
-		<a href="cadastro-orientador.jsp">Cadastrar Orientador</a>
+		<a href="cadastro-aluno.jsp"><p>Cadastrar novo Aluno</a>
+		<a href="cadastro-orientador.jsp"><p>Cadastrar Orientador</a>
 	</form>
 	
 	
