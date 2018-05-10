@@ -50,6 +50,7 @@ public class OrientadoresDAO {
 	
 	public static void adicionarObservacao(String observacao, Orientador orientador, Aluno aluno) {
 		String sql = String.format("CALL addObservacao('%s', '%s', %d)", observacao, orientador.getNome(), aluno.getMatricula());
+		System.out.println(aluno.getMatricula());
 		
 		ManipulacaoBanco.inserirDados(sql);
 	}
