@@ -2,9 +2,9 @@ CREATE DATABASE  IF NOT EXISTS `tcc_ifpa` /*!40100 DEFAULT CHARACTER SET utf8 */
 USE `tcc_ifpa`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: tcc_ifpa
+-- Host: 127.0.0.1    Database: tcc_ifpa
 -- ------------------------------------------------------
--- Server version	5.7.18-log
+-- Server version	5.7.21-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -181,12 +181,16 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getObservacoes`(IN nomeOrientador VARCHAR(120), IN matAluno INT)
 BEGIN
 	DECLARE idOrientador INT;
+    DECLARE idOrientadorAluno INT;
     
     SELECT id INTO idOrientador FROM orientadores
 		WHERE nome=nomeOrientador;
         
-	SELECT * FROM orientador_aluno
+	SELECT id INTO idOrientadorAluno FROM orientador_aluno
 		WHERE id_orientador=idOrientador AND id_aluno=matAluno;
+        
+	SELECT * FROM acompanhamento_tcc
+		WHERE id_orientador_aluno = idOrientadorAluno;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -203,4 +207,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-05 18:03:37
+-- Dump completed on 2018-05-09 21:50:15
