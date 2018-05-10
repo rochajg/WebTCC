@@ -1,7 +1,6 @@
-<%@page import="DAO.OrientadoresDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="modelo.Orientador, modelo.Aluno, java.util.ArrayList" %>
+<%@ page import="DAO.OrientadoresDAO, modelo.Orientador, modelo.Aluno, java.util.ArrayList" %>
     <%
 		modelo.Orientador orientador = (Orientador) session.getAttribute("Orientador");
 	%>
