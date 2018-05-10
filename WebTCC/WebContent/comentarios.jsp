@@ -26,6 +26,7 @@
 <body>
 
 	<h2>Comentários para <%= nomeAluno %></h2>
+	<span style="float: right;padding-right:  50px;font-size: 1.2em;"><a href="pg-orientador.jsp">Voltar</a></span>
 
 <%
 	ResultSet comentarios = OrientadoresDAO.getObservacoes(orientador, new Aluno(Integer.parseInt(request.getParameter("mat"))));
