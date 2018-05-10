@@ -47,6 +47,7 @@
 %>
 			
 			<form action="add-coment.jsp" method="post" id="new-coment">
+				<input type="hidden" name="mat" value="<%= aluno.getInt("matricula") %>"/>
 				<textarea name="observacao" rows="4" cols="32" placeholder="Adicione aqui um novo comentário" form="new-coment"></textarea><br />
 				<input type="submit" value="Adicionar observação" />
 			</form>
@@ -60,6 +61,7 @@
 			</div>
 
 			<form action="add-coment.jsp" method="post" id="new-coment">
+				<input type="hidden" name="mat" value="<%= aluno.getInt("matricula") %>"/>
 				<textarea name="observacao" rows="4" cols="32" placeholder="Adicione aqui um novo comentário" form="new-coment"></textarea><br />
 				<input type="submit" value="Adicionar observação" />
 			</form>
