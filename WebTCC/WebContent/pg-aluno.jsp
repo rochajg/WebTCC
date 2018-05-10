@@ -16,6 +16,7 @@
 	%>
 	
 	<h2>Olá, <%= aluno.getNome() %> </h2>
+	<span style="float: right;padding-right:  50px;font-size: 1.2em;"><a href="logout.jsp">Sair</a></span>
 	
 	<h3>Título TCC: <%= aluno.getTituloTCC() %> </h3>
 	
