@@ -31,8 +31,8 @@ CREATE TABLE `acompanhamento_tcc` (
   `observacao` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_orientador_aluno_idx` (`id_orientador_aluno`),
-  CONSTRAINT `fk_orientador_aluno` FOREIGN KEY (`id_orientador_aluno`) REFERENCES `orientador_aluno` (`id_orientador`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_ori_alu` FOREIGN KEY (`id_orientador_aluno`) REFERENCES `orientador_aluno` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `acompanhamento_tcc` (
 
 LOCK TABLES `acompanhamento_tcc` WRITE;
 /*!40000 ALTER TABLE `acompanhamento_tcc` DISABLE KEYS */;
-INSERT INTO `acompanhamento_tcc` VALUES (1,1,'2018-05-05','teste');
+INSERT INTO `acompanhamento_tcc` VALUES (1,1,'2018-05-05','teste'),(2,1,'2018-05-09','teste00001'),(3,1,'2018-05-09','Vou adicionar um comentÃ¡rio aqui, cacete!'),(8,1,'2018-05-09','Mais uma observacao'),(11,1,'2018-05-09','testeWWWW'),(12,2,'2018-05-09','testando');
 /*!40000 ALTER TABLE `acompanhamento_tcc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +72,7 @@ CREATE TABLE `alunos` (
 
 LOCK TABLES `alunos` WRITE;
 /*!40000 ALTER TABLE `alunos` DISABLE KEYS */;
-INSERT INTO `alunos` VALUES (2015790019,'Jordan Gabriel Lameira Rocha','TADS','Belém','C79TP','2017.2',NULL,'202cb962ac59075b964b07152d234b70');
+INSERT INTO `alunos` VALUES (2015790018,'Wendell Cardoso','TADS','Belém','C795TP','2017.2','','202cb962ac59075b964b07152d234b70'),(2015790019,'Jordan Gabriel Lameira Rocha','TADS','Belém','C79TP','2017.2',NULL,'202cb962ac59075b964b07152d234b70');
 /*!40000 ALTER TABLE `alunos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ DROP TABLE IF EXISTS `orientador_aluno`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orientador_aluno` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `id_orientador` int(10) unsigned NOT NULL,
   `id_aluno` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -92,7 +92,7 @@ CREATE TABLE `orientador_aluno` (
   KEY `fk_id_orientador_idx` (`id_orientador`),
   CONSTRAINT `fk_id_aluno` FOREIGN KEY (`id_aluno`) REFERENCES `alunos` (`matricula`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_id_orientador` FOREIGN KEY (`id_orientador`) REFERENCES `orientadores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +101,7 @@ CREATE TABLE `orientador_aluno` (
 
 LOCK TABLES `orientador_aluno` WRITE;
 /*!40000 ALTER TABLE `orientador_aluno` DISABLE KEYS */;
-INSERT INTO `orientador_aluno` VALUES (1,1,2015790019);
+INSERT INTO `orientador_aluno` VALUES (1,1,2015790019),(2,1,2015790018);
 /*!40000 ALTER TABLE `orientador_aluno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,4 +207,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-09 21:50:15
+-- Dump completed on 2018-05-09 23:43:35
