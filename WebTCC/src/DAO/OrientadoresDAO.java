@@ -103,6 +103,24 @@ public class OrientadoresDAO {
 		
 	}
 	
+	public static boolean addOrientando(Orientador ori, int mat) {
+		String sql = String.format("SELECT * FROM orientador_aluno WHERE id_orientador=%d AND id_aluno=%d", ori.getId(), mat);
+		ResultSet busca = ManipulacaoBanco.buscarDados(sql);
+		
+		try {
+			if(!busca.next()) {
+				sql = String.format("INSERT INTO orientador_aluno(id_orientador, id_aluno) VALUES(%d, %d)", ori.getId(), mat);
+				ManipulacaoBanco.inserirDados(sql);
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
 	
 	public static ResultSet buscarOrientador(Orientador orientador) {
 		String sql = String.format("SELECT * FROM orientadores WHERE nome='%s'", orientador.getNome());
