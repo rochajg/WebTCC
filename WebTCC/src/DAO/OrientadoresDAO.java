@@ -97,21 +97,25 @@ public class OrientadoresDAO {
 			return alunos;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Opa! Deu erro aqui!");
 			return null;
 		}
 		
 	}
 	
 	public static boolean addOrientando(Orientador ori, int mat) {
-		String sql = String.format("SELECT * FROM orientador_aluno WHERE id_orientador=%d AND id_aluno=%d", ori.getId(), mat);
+		String sql = String.format("SELECT * FROM alunos WHERE matricula=%d", mat);
 		ResultSet busca = ManipulacaoBanco.buscarDados(sql);
 		
+		
 		try {
-			if(!busca.next()) {
-				sql = String.format("INSERT INTO orientador_aluno(id_orientador, id_aluno) VALUES(%d, %d)", ori.getId(), mat);
-				ManipulacaoBanco.inserirDados(sql);
-				return true;
+			if(busca.next()) {
+				sql = String.format("SELECT * FROM orientador_aluno WHERE id_orientador=%d AND id_aluno=%d", ori.getId(), mat);
+				busca = ManipulacaoBanco.buscarDados(sql);
+				if(!busca.next()) {
+					sql = String.format("INSERT INTO orientador_aluno(id_orientador, id_aluno) VALUES(%d, %d)", ori.getId(), mat);
+					ManipulacaoBanco.inserirDados(sql);
+					return true;
+				}
 			} else {
 				return false;
 			}
@@ -119,6 +123,7 @@ public class OrientadoresDAO {
 			e.printStackTrace();
 			return false;
 		}
+		return false;
 		
 	}
 	
