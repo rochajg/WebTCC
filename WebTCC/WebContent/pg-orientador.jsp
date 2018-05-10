@@ -3,6 +3,9 @@
 <%@ page import="DAO.OrientadoresDAO, modelo.Orientador, modelo.Aluno, java.util.ArrayList" %>
     <%
 		modelo.Orientador orientador = (Orientador) session.getAttribute("Orientador");
+    
+    if(orientador == null)
+		response.sendRedirect("index.jsp");
 	%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,8 +20,9 @@
 	
 	
 	<h2>Olá, <%= orientador.getNome() %> </h2>
+	<span style="float: right;padding-right:  50px;font-size: 1.2em;"><a href="logout.jsp">Sair</a></span>
 
-	<a href="add-orientando.jsp">+ Adicionar orientando</a>
+	<span style="padding-left:  50px;font-size: 1.2em;"><a href="add-orientando.jsp">+ Adicionar orientando</a></span>
 	
 	<%
 		ArrayList<Aluno> orientandos = new ArrayList<Aluno>();
