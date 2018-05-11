@@ -10,7 +10,7 @@ public class Conexao {
 	private static String porta = "3306";
 	private static String caminho = "jdbc:mysql://"+ endereco +":"+ porta +"/" + db;
 	private static String login = "root";
-	private static String senha = "root";
+	private static String senha = "ifpa@123";
 	private static Connection con;
 	
 	public static Connection conectar() {
@@ -20,7 +20,7 @@ public class Conexao {
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Carregou o driver");
 			
-			con = DriverManager.getConnection("jdbc:mysql://localhost/?user=login&password=senha");
+			con = DriverManager.getConnection(caminho, login, senha);
 			System.out.println("Estabeleceu conexao");
 			
 		} catch (ClassNotFoundException e) {
