@@ -52,6 +52,10 @@
 				<input type="submit" value="Adicionar observação" />
 			</form>
 		
+			<form action="gerar-faatcc.jsp" method="post">
+				<input type="hidden" name="mat" value="<%= aluno.getInt("matricula") %>"/>
+				<input type="submit" value="Gerar Relatório" />
+			</form>
 <%
 			
 		} else {
