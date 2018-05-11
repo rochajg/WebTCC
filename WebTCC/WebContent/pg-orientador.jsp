@@ -37,7 +37,7 @@
 		<div style="border: 2px solid #181818; margin: 20px; padding: 5px; width: 60%;">
 			<span>Nome: <%= orientandos.get(i).getNome() %></span><br />
 			<span>Campus: <%= orientandos.get(i).getCampus() %></span><br />
-			<span>Título TCC: <%= orientandos.get(i).getTituloTCC() == "null" ? orientandos.get(i).getTituloTCC() : "Não definido" %></span><br />
+			<span>Título TCC: <%= orientandos.get(i).getTituloTCC() %></span><br />
 			<form action="comentarios.jsp" method="post">
 				<input type="hidden" name="mat" value="<%= orientandos.get(i).getMatricula() %>"/>
 				<input type="submit" value="Ver Observações" />
