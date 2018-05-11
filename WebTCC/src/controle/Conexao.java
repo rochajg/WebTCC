@@ -6,10 +6,10 @@ import java.sql.SQLException;
 
 public class Conexao {
 	private static String db = "tcc_ifpa";
-	private static String endereco = "localhost";
-	private static String porta = "3306";
+	private static String endereco = "172.18.6.27";
+	private static String porta = "3307";
 	private static String caminho = "jdbc:mysql://"+ endereco +":"+ porta +"/" + db;
-	private static String login = "root";
+	private static String login = "aluno";
 	private static String senha = "ifpa@123";
 	private static Connection con;
 	
