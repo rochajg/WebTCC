@@ -1,5 +1,6 @@
 package DAO;
 
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,9 +25,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import controle.ManipulacaoBanco;
 import modelo.Aluno;
-
-
-
 
 public class AlunosDAO {
 	/* 
@@ -147,141 +145,163 @@ public class AlunosDAO {
 		return ManipulacaoBanco.buscarDados(sql);
 	}
 	
-	public static void gerarTermoAutoria(Aluno aluno) {
-		Document document = new Document(PageSize.A4, 72, 72, 72, 72);
-		FileOutputStream arquivo = null;
-		
-		String campus = "Bel√©m";
-		String img1 = "//home//leon//Documents//republica.png";
-		String img2 = "//home//leon//Documents//ifpa.png";
-		
-		String nome = "Leon Vagner Cruz Teixeira", matricula = "2015790005", 
-				curso = "Tecnologia em Analise e Desenvolvimento de Sistemas",
-				tituloTCC = "Aplica√ß√£o M√≥vel Para a Rota Tur√≠stica Bel√©m-Brangan√ßa",
-				orientador = "Nenhum";
+	public static Aluno preencherAluno(Aluno aluno) {
+		ResultSet busca = buscarAluno(aluno);
+		Aluno alunoPre = new Aluno();
 		
 		try {
-			arquivo = new FileOutputStream("//home//leon//Documents//teste.pdf");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			PdfWriter.getInstance(document, arquivo);
-			
-			document.open();
-			
-			Font fonteCabecalho = FontFactory.getFont(FontFactory.HELVETICA, 8);
-			Font fonteTitulo = FontFactory.getFont(FontFactory.HELVETICA, 14, Font.BOLD);
-			Font fonteTexto = FontFactory.getFont(FontFactory.HELVETICA, 12);
-			
-			Image logo_republica = Image.getInstance(String.format(img1));
-			Image logo_ifpa = Image.getInstance(String.format(img2));
-					
-			Paragraph cabecalho = new Paragraph(String.format("SERVI√áO P√öBLICO FEDERAL\n"
-					+ "MINIST√âRIO DA EDUCA√á√ÉO\n"
-					+ "INSTITUTO FEDERAL DE EDUCA√á√ÉO, CI√äNCIA E TECNOLOGIA DO PAR√Å\n"
-					+ "CAMPUS %s\n"
-					+ "DIRETORIA DE ENSINO\n", campus), fonteCabecalho);
-			
-			Paragraph linhaEmBranco =  new Paragraph("\n");
-			
-			Paragraph titulo =  new Paragraph("TERMO DE RESPONSABILIDADE DE AUTORIA", fonteTitulo);
-			
-			Paragraph conteudo1 = new Paragraph(String.format("Eu %s, matr√≠cula n¬∫ %s, estudante do curso %s,"
-					+ "do IFPA Campus %s, estou ciente de que √© considerada utiliza√ß√£o indevida, ilegal "
-					+ "e/ou pl√°gio, os seguintes casos: \n\n", nome, matricula, curso, campus), fonteTexto);
-			
-			String texto1 = "Texto de autoria de terceiros.";
-			String texto2 = "Texto adaptado em parte ou totalmente.";
-			String texto3 = "Texto produzido por terceiros, sob encomenda, mediante pagamento (ou n√£o) de "
-					+ "horon√°rios profissionais.";
-			
-			Paragraph conteudo2 = new Paragraph("Declaro estar ciente de que, caso constado o envolvimento de meu TCC"
-					+ "em alguma das situa√ß√µes supracitadas, o mesmo ser√° considerado nulo, tornando-se inv√°lidos todos"
-					+ "os atos decorrentes de sua apresenta√ß√£o.", fonteTexto);
-			
-			Paragraph conteudo3 = new Paragraph("Ademais, estou ciente ainda que tais pr√°ticas s√£o consideradas faltas"
-					+ "graves, estando seu praticante sujeito √†s sans√µes administrativas, disciplinares e penais"
-					+ "eventualmente cab√≠veis.", fonteTexto);
-			
-			Paragraph conteudo4 = new Paragraph(String.format("Logo, declaro ser de minha autoria o texto referente ao trabalho"
-					+ "de Conclus√£o de Curso sob o t√≠tulo %s, orientado pelo professor %s.", tituloTCC, orientador), fonteTexto);
+			if(busca.next()) {
+				alunoPre.setMatricula(busca.getInt("matricula"));
+				alunoPre.setNome(busca.getString("nome"));
+				alunoPre.setCurso(busca.getString("curso"));
+				alunoPre.setCampus(busca.getString("campus"));
+				alunoPre.setTurma(busca.getString("turma"));
+				alunoPre.setAnoSemestre(busca.getString("ano_semestre"));	
+				alunoPre.setTituloTCC(busca.getString("titulo_tcc"));
 				
-			Calendar c = Calendar.getInstance();
-			c.setTime(new Date());
-			DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
-			
-			Paragraph data = new Paragraph(String.format("%s, %s", campus, df.format(c.getTime())), fonteTexto);
-			
-			cabecalho.setAlignment(cabecalho.ALIGN_CENTER);
-			
-			titulo.setAlignment(titulo.ALIGN_CENTER);
-			conteudo1.setAlignment(conteudo1.ALIGN_JUSTIFIED);
-			conteudo1.setFirstLineIndent(20);
-			
-			conteudo2.setAlignment(conteudo1.ALIGN_JUSTIFIED);
-			conteudo2.setFirstLineIndent(20);
-			
-			conteudo3.setAlignment(conteudo1.ALIGN_JUSTIFIED);
-			conteudo3.setFirstLineIndent(20);
-			
-			conteudo4.setAlignment(conteudo1.ALIGN_JUSTIFIED);
-			conteudo4.setFirstLineIndent(20);
-			
-			data.setAlignment(data.ALIGN_RIGHT);
-			
-			logo_republica.setAbsolutePosition(50, 700);
-			logo_republica.scaleToFit(50, 50);
-			
-			logo_ifpa.setAbsolutePosition(500, 700);
-			logo_ifpa.scaleToFit(60, 60);
-			
-			List lista = new List();
-			lista.setListSymbol("\u2022 ");
-			
-			ListItem item1 = new ListItem(texto1, fonteTexto);
-			ListItem item2 = new ListItem(texto2, fonteTexto);
-			ListItem item3 = new ListItem(texto3, fonteTexto);
-			
-			item1.setAlignment(Element.ALIGN_MIDDLE);
-			item2.setAlignment(Element.ALIGN_MIDDLE);
-			item3.setAlignment(Element.ALIGN_MIDDLE);
-			lista.add(item1);
-			lista.add(item2);
-			lista.add(item3);
-			
-			
-			document.add(cabecalho);
-			document.add(logo_republica);
-			document.add(logo_ifpa);
-			document.add(linhaEmBranco);
-			document.add(linhaEmBranco);
-			document.add(titulo);
-			document.add(linhaEmBranco);
-			document.add(conteudo1);
-			document.add(lista);
-			document.add(linhaEmBranco);
-			document.add(conteudo2);	
-			document.add(conteudo3);
-			document.add(conteudo4);
-			
-			for(int i=0; i<10; i++) {
-				document.add(linhaEmBranco);
+				return alunoPre;
 			}
-			document.add(data);
-			
-			
-		} catch(DocumentException de) {
-			System.err.println(de.getMessage());
-		} catch (MalformedURLException e) {
-
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-        document.close();
+		return null;
 	}
+	
+	public static void gerarTermoAutoria(Aluno aluno) {
+				Document document = new Document(PageSize.A4, 72, 72, 72, 72);
+				FileOutputStream arquivo = null;
+				
+				String campus = "BelÈm";
+				String img1 = "//home//leon//Documents//republica.png";
+				String img2 = "//home//leon//Documents//ifpa.png";
+				
+				String nome = "Leon Vagner Cruz Teixeira", matricula = "2015790005", 
+						curso = "Tecnologia em Analise e Desenvolvimento de Sistemas",
+						tituloTCC = "AplicaÁ„o MÛvel Para a Rota TurÌstica BelÈm-BranganÁa",
+						orientador = "Nenhum";
+				
+				try {
+					arquivo = new FileOutputStream("//home//leon//Documents//teste.pdf");
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+				
+				try {
+					PdfWriter.getInstance(document, arquivo);
+					
+					document.open();
+					
+					Font fonteCabecalho = FontFactory.getFont(FontFactory.HELVETICA, 8);
+					Font fonteTitulo = FontFactory.getFont(FontFactory.HELVETICA, 14, Font.BOLD);
+					Font fonteTexto = FontFactory.getFont(FontFactory.HELVETICA, 12);
+					
+					Image logo_republica = Image.getInstance(String.format(img1));
+					Image logo_ifpa = Image.getInstance(String.format(img2));
+							
+					Paragraph cabecalho = new Paragraph(String.format("SERVI«O P⁄BLICO FEDERAL\n"
+							+ "MINIST…RIO DA EDUCA«√O\n"
+							+ "INSTITUTO FEDERAL DE EDUCA«√O, CI NCIA E TECNOLOGIA DO PAR¡\n"
+							+ "CAMPUS %s\n"
+							+ "DIRETORIA DE ENSINO\n", campus), fonteCabecalho);
+					
+					Paragraph linhaEmBranco =  new Paragraph("\n");
+					
+					Paragraph titulo =  new Paragraph("TERMO DE RESPONSABILIDADE DE AUTORIA", fonteTitulo);
+					
+					Paragraph conteudo1 = new Paragraph(String.format("Eu %s, matrÌcula n∫ %s, estudante do curso %s,"
+							+ "do IFPA Campus %s, estou ciente de que È considerada utilizaÁ„o indevida, ilegal "
+							+ "e/ou pl·gio, os seguintes casos: \n\n", nome, matricula, curso, campus), fonteTexto);
+					
+					String texto1 = "Texto de autoria de terceiros.";
+					String texto2 = "Texto adaptado em parte ou totalmente.";
+					String texto3 = "Texto produzido por terceiros, sob encomenda, mediante pagamento (ou n„o) de "
+							+ "horon·rios profissionais.";
+					
+					Paragraph conteudo2 = new Paragraph("Declaro estar ciente de que, caso constado o envolvimento de meu TCC"
+							+ "em alguma das situaÁıes supracitadas, o mesmo ser· considerado nulo, tornando-se inv·lidos todos"
+							+ "os atos decorrentes de sua apresentaÁ„o.", fonteTexto);
+					
+					Paragraph conteudo3 = new Paragraph("Ademais, estou ciente ainda que tais pr·ticas s„o consideradas faltas"
+							+ "graves, estando seu praticante sujeito ‡s sansıes administrativas, disciplinares e penais"
+							+ "eventualmente cabÌveis.", fonteTexto);
+					
+					Paragraph conteudo4 = new Paragraph(String.format("Logo, declaro ser de minha autoria o texto referente ao trabalho"
+							+ "de Conclus„o de Curso sob o tÌtulo %s, orientado pelo professor %s.", tituloTCC, orientador), fonteTexto);
+						
+					Calendar c = Calendar.getInstance();
+					c.setTime(new Date());
+					DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
+					
+					Paragraph data = new Paragraph(String.format("%s, %s", campus, df.format(c.getTime())), fonteTexto);
+					
+					cabecalho.setAlignment(cabecalho.ALIGN_CENTER);
+					
+					titulo.setAlignment(titulo.ALIGN_CENTER);
+					conteudo1.setAlignment(conteudo1.ALIGN_JUSTIFIED);
+					conteudo1.setFirstLineIndent(20);
+					
+					conteudo2.setAlignment(conteudo1.ALIGN_JUSTIFIED);
+					conteudo2.setFirstLineIndent(20);
+					
+					conteudo3.setAlignment(conteudo1.ALIGN_JUSTIFIED);
+					conteudo3.setFirstLineIndent(20);
+					
+					conteudo4.setAlignment(conteudo1.ALIGN_JUSTIFIED);
+					conteudo4.setFirstLineIndent(20);
+					
+					data.setAlignment(data.ALIGN_RIGHT);
+					
+					logo_republica.setAbsolutePosition(50, 700);
+					logo_republica.scaleToFit(50, 50);
+					
+					logo_ifpa.setAbsolutePosition(500, 700);
+					logo_ifpa.scaleToFit(60, 60);
+					
+					List lista = new List();
+					lista.setListSymbol("\u2022 ");
+					
+					ListItem item1 = new ListItem(texto1, fonteTexto);
+					ListItem item2 = new ListItem(texto2, fonteTexto);
+					ListItem item3 = new ListItem(texto3, fonteTexto);
+					
+					item1.setAlignment(Element.ALIGN_MIDDLE);
+					item2.setAlignment(Element.ALIGN_MIDDLE);
+					item3.setAlignment(Element.ALIGN_MIDDLE);
+					lista.add(item1);
+					lista.add(item2);
+					lista.add(item3);
+					
+					
+					document.add(cabecalho);
+					document.add(logo_republica);
+					document.add(logo_ifpa);
+					document.add(linhaEmBranco);
+					document.add(linhaEmBranco);
+					document.add(titulo);
+					document.add(linhaEmBranco);
+					document.add(conteudo1);
+					document.add(lista);
+					document.add(linhaEmBranco);
+					document.add(conteudo2);	
+					document.add(conteudo3);
+					document.add(conteudo4);
+					
+				for(int i=0; i<10; i++) {
+						document.add(linhaEmBranco);
+					}
+					document.add(data);
+					
+					
+				} catch(DocumentException de) {
+					System.err.println(de.getMessage());
+				} catch (MalformedURLException e) {
+		
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+		        document.close();
+			}
 }
-
