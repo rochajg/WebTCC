@@ -9,6 +9,17 @@ public class Orientador {
 				   login,
 				   senha;
 	
+	public Orientador() {
+		
+	}
+	
+
+	public Orientador(int id, String nome, String curso) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.curso = curso;
+	}
 
 	public int getId() {
 		return id;

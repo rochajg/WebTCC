@@ -24,7 +24,7 @@ import DAO.OrientadoresDAO;
 import modelo.Aluno;
 import modelo.Orientador;
 
-public class PrimeiroPDF {
+public class PDFTeste {
     public static void main(String[] args) throws Exception {
     	Orientador ori = new Orientador(1, "Marcio Warris", "TADS");
     	Aluno aluno = new Aluno(2015790019);
@@ -62,15 +62,15 @@ public class PrimeiroPDF {
             
           //adiciona o texto ao PDF
             Paragraph cabecalho = new Paragraph(
-            		"SERVIÇO PÚBLICO FEDERAL\n" +
-            		"MINISTÉRIO DA EDUCAÇÃO\n" +
-            		"INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO PARÁ\n" +
-            		"CAMPUS BELÉM\n" +
+            		"SERVIï¿½O Pï¿½BLICO FEDERAL\n" +
+            		"MINISTï¿½RIO DA EDUCAï¿½ï¿½O\n" +
+            		"INSTITUTO FEDERAL DE EDUCAï¿½ï¿½O, CIï¿½NCIA E TECNOLOGIA DO PARï¿½\n" +
+            		"CAMPUS BELï¿½M\n" +
             		"DIRETORIA DE ENSINO",
             		fontCabecalho);
             cabecalho.setAlignment(Element.ALIGN_CENTER);
             
-            Paragraph titulo = new Paragraph("FICHA DE ACOMPANHAMENTO DAS ATIVIDADES DO TRABALHO DE CONCLUSÃO DE CURSO", fontTitulo);
+            Paragraph titulo = new Paragraph("FICHA DE ACOMPANHAMENTO DAS ATIVIDADES DO TRABALHO DE CONCLUSï¿½O DE CURSO", fontTitulo);
             titulo.setAlignment(Element.ALIGN_CENTER);
             titulo.setSpacingAfter(10);
             titulo.setSpacingBefore(10);
@@ -106,7 +106,7 @@ public class PrimeiroPDF {
             table.setSpacingAfter(20);
             
             PdfPCell header_data = new PdfPCell(new Paragraph("DATA", fontCabecalho));
-            PdfPCell header_observacao = new PdfPCell(new Paragraph("OBSERVAÇÕES E CONSIDERAÇÕES SOBRE A ORENTAÇÃO", fontCabecalho));
+            PdfPCell header_observacao = new PdfPCell(new Paragraph("OBSERVAï¿½ï¿½ES E CONSIDERAï¿½ï¿½ES SOBRE A ORENTAï¿½ï¿½O", fontCabecalho));
             PdfPCell header_assinaturas = new PdfPCell(new Paragraph("ASSINATURA DOS ORIENTANDOS E ORIENTADOR", fontCabecalho));
             
             header_data.setBackgroundColor(BaseColor.LIGHT_GRAY);
@@ -131,10 +131,10 @@ public class PrimeiroPDF {
             
             
 
-            //cria a stream de saída
+            //cria a stream de saï¿½da
             os = new FileOutputStream(caminho);
 
-            //associa a stream de saída ao 
+            //associa a stream de saï¿½da ao 
             PdfWriter.getInstance(doc, os);
 
             //abre o documento
@@ -155,7 +155,7 @@ public class PrimeiroPDF {
                 doc.close();
             }
             if (os != null) {
-                //fechamento da stream de saída
+                //fechamento da stream de saï¿½da
                 os.close();
             }
         }

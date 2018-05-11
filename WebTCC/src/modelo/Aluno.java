@@ -15,6 +15,7 @@ public class Aluno {
 	}
 	
 	public Aluno(int matricula) {
+		super();
 		this.matricula = matricula;
 	}
 	
