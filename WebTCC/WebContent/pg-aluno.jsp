@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="modelo.Aluno" %>
+<%@ page import="modelo.Aluno"%>
+<%@ page import="DAO.AlunosDAO"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,7 +21,9 @@
 	
 	<h3>Título TCC: <%= aluno.getTituloTCC() %> </h3>
 	
-	<a href="">Gerar Termo de Responsabilidade De Autoria</a>
+	<form action="gerarTermoAutoria.jsp" method="post">
+		<a >Download do Termo de Responsabilidade De Autoria</a>
+	</form>
 	
 	<footer>
 		Indie Atom Tecnologies&copy;
